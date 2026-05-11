@@ -1,0 +1,71 @@
+aid: productboard
+name: Productboard
+description: >-
+  Productboard is a product management platform that helps product teams
+  capture user feedback, prioritize features, build product roadmaps, and
+  align engineering, design, and go-to-market stakeholders around what to
+  build next. The Productboard Public REST API (v1 and v2) provides
+  programmatic access to features, components, products, notes, users,
+  companies, objectives, releases, and webhooks at https://api.productboard.com,
+  with authentication via a Public API Access token (Bearer) or OAuth2.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Product Management
+  - Roadmapping
+  - Customer Feedback
+  - Prioritization
+  - Product Operations
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/productboard/refs/heads/main/apis.yml
+created: '2026-05-11'
+modified: '2026-05-11'
+specificationVersion: '0.19'
+apis:
+  - aid: productboard:public-api
+    name: Productboard Public API
+    description: >-
+      REST API for managing features, components, products, notes (customer
+      feedback), users, companies, objectives, releases, and webhooks within
+      Productboard. Supports both v1 and v2 endpoints. Authentication uses
+      Bearer tokens (Public API Access token) or OAuth2 for multi-tenant
+      integrations.
+    humanURL: https://developer.productboard.com/
+    baseURL: https://api.productboard.com
+    tags:
+      - Product Management
+      - Roadmapping
+      - Customer Feedback
+      - REST
+    properties:
+      - type: Documentation
+        url: https://developer.productboard.com/
+      - type: Authentication
+        url: https://developer.productboard.com/reference/authentication
+      - type: API Token Authentication
+        url: https://developer.productboard.com/v2.0.0/reference/api-token
+      - type: OAuth2 Guide
+        url: https://developer.productboard.com/docs/how-to-integrate-with-productboard-via-oauth2-developer-documentation
+      - type: Postman Collection
+        url: https://www.postman.com/pb-stargate/productboard-public-api/documentation/cpzbdpj/productboard-api-reference
+
+common:
+  - type: Website
+    url: https://www.productboard.com
+  - type: Documentation
+    url: https://developer.productboard.com
+  - type: Pricing
+    url: https://www.productboard.com/pricing/
+  - type: Sign Up
+    url: https://www.productboard.com/trial/
+  - type: Support
+    url: https://support.productboard.com
+  - type: Blog
+    url: https://www.productboard.com/blog/
+  - type: Status
+    url: https://status.productboard.com
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/productboard/
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

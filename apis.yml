@@ -50,6 +50,8 @@ apis:
         url: https://www.postman.com/pb-stargate/productboard-public-api/documentation/cpzbdpj/productboard-api-reference
 
 common:
+  - type: GitHubOrganization
+    url: https://github.com/productboard
   - type: Website
     url: https://www.productboard.com
   - type: Documentation

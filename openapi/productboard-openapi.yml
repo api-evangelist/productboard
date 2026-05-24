@@ -1,0 +1,562 @@
+openapi: 3.1.0
+info:
+  title: Productboard Public API
+  description: |
+    REST API v2 for managing entities (products, features, components, initiatives), notes
+    (customer feedback), members, teams, Jira and plugin integrations, and webhooks within
+    Productboard. Authentication uses Personal API Tokens (Bearer) or OAuth 2.0
+    (authorization code or server-to-server JWT). Uses cursor-based pagination.
+  version: "2.0.0"
+  contact:
+    name: Productboard Developer
+    url: https://developer.productboard.com/
+servers:
+  - url: https://api.productboard.com/v2
+    description: Productboard REST API v2 base URL
+security:
+  - bearerAuth: []
+  - oauth2: []
+tags:
+  - name: Entities
+  - name: Entity Relationships
+  - name: Entity Field Values
+  - name: Notes
+  - name: Note Relationships
+  - name: Members
+  - name: Teams
+  - name: Jira Integrations
+  - name: Plugin Integrations
+  - name: Webhooks
+paths:
+  /entities:
+    get:
+      tags: [Entities]
+      summary: List entities
+      description: List entities with filtering and pagination.
+      parameters:
+        - $ref: '#/components/parameters/PageCursor'
+      responses:
+        '200':
+          description: Paged list of entities
+    post:
+      tags: [Entities]
+      summary: Create entity
+      responses:
+        '201':
+          description: Entity created
+  /entities/{id}:
+    parameters:
+      - $ref: '#/components/parameters/EntityId'
+    get:
+      tags: [Entities]
+      summary: Retrieve entity
+      responses:
+        '200':
+          description: Entity record
+    patch:
+      tags: [Entities]
+      summary: Update entity
+      responses:
+        '200':
+          description: Entity updated
+    delete:
+      tags: [Entities]
+      summary: Delete entity (cascading)
+      responses:
+        '204':
+          description: Entity deleted
+  /entities/search:
+    post:
+      tags: [Entities]
+      summary: Advanced entity search
+      responses:
+        '200':
+          description: Search results
+  /entities/configurations:
+    get:
+      tags: [Entities]
+      summary: List entity type configurations
+      responses:
+        '200':
+          description: Configuration list
+  /entities/configurations/{type}:
+    parameters:
+      - name: type
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Entities]
+      summary: Get configuration for entity type
+      responses:
+        '200':
+          description: Configuration record
+  /entities/{id}/relationships:
+    parameters:
+      - $ref: '#/components/parameters/EntityId'
+    get:
+      tags: [Entity Relationships]
+      summary: List entity relationships
+      responses:
+        '200':
+          description: Relationship list
+    post:
+      tags: [Entity Relationships]
+      summary: Create relationship
+      responses:
+        '201':
+          description: Relationship created
+    delete:
+      tags: [Entity Relationships]
+      summary: Remove relationship
+      responses:
+        '204':
+          description: Relationship removed
+  /entities/{id}/relationships/parent:
+    parameters:
+      - $ref: '#/components/parameters/EntityId'
+    put:
+      tags: [Entity Relationships]
+      summary: Set or replace parent
+      responses:
+        '200':
+          description: Parent set
+  /entities/fields/{fieldId}/values:
+    parameters:
+      - name: fieldId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Entity Field Values]
+      summary: List field values
+      responses:
+        '200':
+          description: Field values
+    post:
+      tags: [Entity Field Values]
+      summary: Create field option
+      responses:
+        '201':
+          description: Field option created
+  /entities/fields/{fieldId}/values/{valueId}:
+    parameters:
+      - name: fieldId
+        in: path
+        required: true
+        schema: { type: string }
+      - name: valueId
+        in: path
+        required: true
+        schema: { type: string }
+    patch:
+      tags: [Entity Field Values]
+      summary: Update field value
+      responses:
+        '200':
+          description: Value updated
+    delete:
+      tags: [Entity Field Values]
+      summary: Delete field value
+      responses:
+        '204':
+          description: Value deleted
+  /notes:
+    get:
+      tags: [Notes]
+      summary: List notes
+      parameters:
+        - $ref: '#/components/parameters/PageCursor'
+      responses:
+        '200':
+          description: Paged list of notes
+    post:
+      tags: [Notes]
+      summary: Create note (textNote or conversationNote)
+      responses:
+        '201':
+          description: Note created
+  /notes/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Notes]
+      summary: Retrieve note
+      responses:
+        '200':
+          description: Note record
+    patch:
+      tags: [Notes]
+      summary: Update note
+      responses:
+        '200':
+          description: Note updated
+    delete:
+      tags: [Notes]
+      summary: Delete note permanently
+      responses:
+        '204':
+          description: Note deleted
+  /notes/search:
+    post:
+      tags: [Notes]
+      summary: Search notes
+      responses:
+        '200':
+          description: Search results
+  /notes/configurations:
+    get:
+      tags: [Notes]
+      summary: List note type configurations
+      responses:
+        '200':
+          description: Configuration list
+  /notes/configurations/{type}:
+    parameters:
+      - name: type
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Notes]
+      summary: Get configuration for note type
+      responses:
+        '200':
+          description: Configuration record
+  /notes/{id}/relationships:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Note Relationships]
+      summary: List note relationships
+      responses:
+        '200':
+          description: Relationship list
+    post:
+      tags: [Note Relationships]
+      summary: Link note to entity or customer
+      responses:
+        '201':
+          description: Relationship created
+  /notes/{id}/relationships/{targetId}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+      - name: targetId
+        in: path
+        required: true
+        schema: { type: string }
+    delete:
+      tags: [Note Relationships]
+      summary: Remove relationship
+      responses:
+        '204':
+          description: Relationship removed
+  /notes/{id}/relationships/customer:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    put:
+      tags: [Note Relationships]
+      summary: Set or replace customer relationship
+      responses:
+        '200':
+          description: Customer relationship set
+  /members:
+    get:
+      tags: [Members]
+      summary: List workspace members
+      responses:
+        '200':
+          description: Member list
+  /members/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Members]
+      summary: Retrieve member
+      responses:
+        '200':
+          description: Member record
+  /members/search:
+    post:
+      tags: [Members]
+      summary: Search members
+      responses:
+        '200':
+          description: Search results
+  /members/{id}/activities:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Members]
+      summary: List member activity data
+      responses:
+        '200':
+          description: Activity list
+  /teams:
+    get:
+      tags: [Teams]
+      summary: List teams
+      responses:
+        '200':
+          description: Team list
+    post:
+      tags: [Teams]
+      summary: Create team
+      responses:
+        '201':
+          description: Team created
+  /teams/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Teams]
+      summary: Retrieve team
+      responses:
+        '200':
+          description: Team record
+    patch:
+      tags: [Teams]
+      summary: Update team
+      responses:
+        '200':
+          description: Team updated
+    delete:
+      tags: [Teams]
+      summary: Delete team
+      responses:
+        '204':
+          description: Team deleted
+  /teams/search:
+    post:
+      tags: [Teams]
+      summary: Search teams
+      responses:
+        '200':
+          description: Search results
+  /teams/{id}/members:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Teams]
+      summary: List team members
+      responses:
+        '200':
+          description: Team member list
+  /jira-integrations:
+    get:
+      tags: [Jira Integrations]
+      summary: List Jira integrations
+      responses:
+        '200':
+          description: Integration list
+  /jira-integrations/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Jira Integrations]
+      summary: Get Jira integration
+      responses:
+        '200':
+          description: Integration record
+  /jira-integrations/{id}/connections:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Jira Integrations]
+      summary: List feature-to-issue connections
+      responses:
+        '200':
+          description: Connection list
+  /jira-integrations/{id}/connections/{entityId}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+      - name: entityId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Jira Integrations]
+      summary: Get specific connection
+      responses:
+        '200':
+          description: Connection record
+  /plugin-integrations:
+    get:
+      tags: [Plugin Integrations]
+      summary: List plugin integrations
+      responses:
+        '200':
+          description: Integration list
+    post:
+      tags: [Plugin Integrations]
+      summary: Create plugin integration
+      responses:
+        '201':
+          description: Integration created
+  /plugin-integrations/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Plugin Integrations]
+      summary: Get plugin integration
+      responses:
+        '200':
+          description: Integration record
+    patch:
+      tags: [Plugin Integrations]
+      summary: Update plugin integration
+      responses:
+        '200':
+          description: Integration updated
+    delete:
+      tags: [Plugin Integrations]
+      summary: Delete plugin integration
+      responses:
+        '204':
+          description: Integration deleted
+  /plugin-integrations/{id}/connections:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Plugin Integrations]
+      summary: List connections
+      responses:
+        '200':
+          description: Connection list
+  /plugin-integrations/{id}/connections/{entityId}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+      - name: entityId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Plugin Integrations]
+      summary: Get entity connection
+      responses:
+        '200':
+          description: Connection record
+    put:
+      tags: [Plugin Integrations]
+      summary: Create or update connection state
+      responses:
+        '200':
+          description: Connection upserted
+    delete:
+      tags: [Plugin Integrations]
+      summary: Delete connection
+      responses:
+        '204':
+          description: Connection deleted
+  /plugin-integrations/{id}/connections/search:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    post:
+      tags: [Plugin Integrations]
+      summary: Search connections
+      responses:
+        '200':
+          description: Search results
+  /webhooks:
+    get:
+      tags: [Webhooks]
+      summary: List webhook subscriptions
+      responses:
+        '200':
+          description: Webhook list
+    post:
+      tags: [Webhooks]
+      summary: Create webhook subscription
+      responses:
+        '201':
+          description: Webhook created
+  /webhooks/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Webhooks]
+      summary: Get webhook
+      responses:
+        '200':
+          description: Webhook record
+    delete:
+      tags: [Webhooks]
+      summary: Delete webhook subscription
+      responses:
+        '204':
+          description: Webhook deleted
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Personal API Access Token passed as `Authorization: Bearer <token>`.
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.productboard.com/oauth2/authorize
+          tokenUrl: https://app.productboard.com/oauth2/token
+          scopes: {}
+  parameters:
+    EntityId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    PageCursor:
+      name: pageCursor
+      in: query
+      description: Cursor returned in `links.next` for paginated responses.
+      required: false
+      schema:
+        type: string

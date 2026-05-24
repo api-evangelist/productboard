@@ -68,6 +68,8 @@ common:
     url: https://status.productboard.com
   - type: LinkedIn
     url: https://www.linkedin.com/company/productboard/
+  - type: LLMsTxt
+    url: https://developer.productboard.com/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

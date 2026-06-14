@@ -1,0 +1,692 @@
+"""
+Productboard GraphQL Schema
+Derived from the Productboard Public REST API (v1 and v2)
+Documentation: https://developer.productboard.com/
+"""
+
+scalar DateTime
+scalar JSON
+
+# ──────────────────────────────────────────────
+# Features
+# ──────────────────────────────────────────────
+
+"""A product feature or idea managed in Productboard."""
+type Feature {
+  id: ID!
+  name: String!
+  description: String
+  status: FeatureStatus
+  type: FeatureType
+  owner: FeatureOwner
+  component: FeatureComponent
+  tags: [FeatureTag!]
+  objectives: [FeatureObjective!]
+  notes: [FeatureNote!]
+  timeframeStartDate: DateTime
+  timeframeEndDate: DateTime
+  effort: Int
+  priority: Int
+  rank: Float
+  archived: Boolean
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  details: FeatureDetails
+}
+
+"""Extended details for a Feature."""
+type FeatureDetails {
+  featureId: ID!
+  htmlDescription: String
+  attachments: [String!]
+  customFields: JSON
+  statusChanges: [StatusChangeTimestamp!]
+  linkedReleases: [Release!]
+  parentFeature: Feature
+  subFeatures: [Feature!]
+}
+
+"""Workflow status of a Feature."""
+type FeatureStatus {
+  id: ID!
+  name: String!
+  color: String
+  order: Int
+}
+
+"""Classification type of a Feature (e.g., bug, improvement, new feature)."""
+type FeatureType {
+  id: ID!
+  name: String!
+  iconUrl: String
+}
+
+"""The user who owns or is responsible for a Feature."""
+type FeatureOwner {
+  userId: ID!
+  name: String!
+  email: String
+  avatarUrl: String
+}
+
+"""Tag applied to a Feature for categorization."""
+type FeatureTag {
+  id: ID!
+  name: String!
+  color: String
+}
+
+"""Association between a Feature and a Component."""
+type FeatureComponent {
+  componentId: ID!
+  componentName: String!
+  productAreaId: ID
+  productAreaName: String
+}
+
+"""Association between a Feature and a strategic Objective."""
+type FeatureObjective {
+  objectiveId: ID!
+  objectiveName: String!
+  alignmentScore: Float
+}
+
+"""A customer Note linked to a Feature."""
+type FeatureNote {
+  noteId: ID!
+  title: String
+  content: String
+  authorEmail: String
+  createdAt: DateTime
+}
+
+# ──────────────────────────────────────────────
+# Components and Product Areas
+# ──────────────────────────────────────────────
+
+"""A logical grouping of Features within a product."""
+type Component {
+  id: ID!
+  name: String!
+  description: String
+  productArea: ProductArea
+  parentComponent: Component
+  subComponents: [Component!]
+  featureCount: Int
+  archived: Boolean
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  details: ComponentDetails
+}
+
+"""Extended details for a Component."""
+type ComponentDetails {
+  componentId: ID!
+  owner: FeatureOwner
+  customFields: JSON
+  hierarchy: ComponentHierarchy
+}
+
+"""A high-level product area that groups components and features."""
+type ProductArea {
+  id: ID!
+  name: String!
+  description: String
+  components: [Component!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Hierarchical relationship between components."""
+type ComponentHierarchy {
+  rootId: ID!
+  rootName: String!
+  ancestors: [Component!]
+  depth: Int!
+}
+
+# ──────────────────────────────────────────────
+# Columns
+# ──────────────────────────────────────────────
+
+"""A column used in roadmap or board views."""
+type Column {
+  id: ID!
+  name: String!
+  type: ColumnType
+  order: Int
+  details: ColumnDetails
+}
+
+"""Extended details for a Column."""
+type ColumnDetails {
+  columnId: ID!
+  description: String
+  startDate: DateTime
+  endDate: DateTime
+  featureCount: Int
+}
+
+"""The classification type of a Column (e.g., time-based, status-based)."""
+type ColumnType {
+  id: ID!
+  name: String!
+  isTimeBased: Boolean
+}
+
+# ──────────────────────────────────────────────
+# Objectives and OKRs
+# ──────────────────────────────────────────────
+
+"""A strategic objective product teams align features toward."""
+type Objective {
+  id: ID!
+  name: String!
+  description: String
+  owner: FeatureOwner
+  keyResults: [KeyResult!]
+  linkedFeatures: [Feature!]
+  startDate: DateTime
+  endDate: DateTime
+  archived: Boolean
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  details: ObjectiveDetails
+}
+
+"""Extended details for an Objective."""
+type ObjectiveDetails {
+  objectiveId: ID!
+  progress: Float
+  status: String
+  customFields: JSON
+}
+
+"""An OKR (Objectives and Key Results) container."""
+type OKR {
+  id: ID!
+  objective: Objective!
+  keyResults: [KeyResult!]!
+  period: String
+  owner: FeatureOwner
+  createdAt: DateTime!
+}
+
+"""A measurable key result associated with an Objective."""
+type KeyResult {
+  id: ID!
+  objectiveId: ID!
+  name: String!
+  description: String
+  startValue: Float
+  targetValue: Float
+  currentValue: Float
+  unit: String
+  values: [KeyResultValue!]
+  updatedAt: DateTime!
+}
+
+"""A timestamped data point tracking progress on a Key Result."""
+type KeyResultValue {
+  id: ID!
+  keyResultId: ID!
+  value: Float!
+  note: String
+  recordedAt: DateTime!
+  recordedBy: FeatureOwner
+}
+
+# ──────────────────────────────────────────────
+# Insights and Customer Feedback
+# ──────────────────────────────────────────────
+
+"""A synthesized insight derived from one or more customer Notes."""
+type Insight {
+  id: ID!
+  title: String!
+  description: String
+  linkedNotes: [FeatureNote!]
+  highlights: [InsightHighlight!]
+  sentiment: InsightSentiment
+  tags: [NoteTag!]
+  topics: [NoteTopic!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  details: InsightDetails
+}
+
+"""Extended details for an Insight."""
+type InsightDetails {
+  insightId: ID!
+  sourceCount: Int
+  impactedCompanyCount: Int
+  impactedUserCount: Int
+  customFields: JSON
+}
+
+"""A highlighted passage from a customer note linked to an Insight."""
+type InsightHighlight {
+  id: ID!
+  insightId: ID!
+  noteId: ID!
+  text: String!
+  startOffset: Int
+  endOffset: Int
+}
+
+"""Sentiment classification for an Insight or Note."""
+type InsightSentiment {
+  label: String!
+  score: Float
+  detectedAt: DateTime
+}
+
+"""A tag applied to a customer Note or Insight."""
+type NoteTag {
+  id: ID!
+  name: String!
+  color: String
+}
+
+"""A topic or theme cluster derived from customer Notes."""
+type NoteTopic {
+  id: ID!
+  name: String!
+  description: String
+  featureCount: Int
+  noteCount: Int
+}
+
+# ──────────────────────────────────────────────
+# Roadmaps
+# ──────────────────────────────────────────────
+
+"""A product roadmap view in Productboard."""
+type Roadmap {
+  id: ID!
+  name: String!
+  description: String
+  columns: [RoadmapColumn!]
+  features: [RoadmapFeature!]
+  isPublic: Boolean
+  shareUrl: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  details: RoadmapDetails
+}
+
+"""Extended details for a Roadmap."""
+type RoadmapDetails {
+  roadmapId: ID!
+  owner: FeatureOwner
+  viewers: [FeatureOwner!]
+  lastPublishedAt: DateTime
+  customFields: JSON
+}
+
+"""A column within a Roadmap (e.g., a time period or swimlane)."""
+type RoadmapColumn {
+  id: ID!
+  roadmapId: ID!
+  name: String!
+  order: Int
+  startDate: DateTime
+  endDate: DateTime
+  features: [RoadmapFeature!]
+}
+
+"""A Feature placed on a Roadmap with display metadata."""
+type RoadmapFeature {
+  id: ID!
+  roadmapId: ID!
+  feature: Feature!
+  columnId: ID
+  priority: RoadmapPriority
+  rank: Float
+  displayStatus: String
+}
+
+"""Prioritization metadata for a Feature on a Roadmap."""
+type RoadmapPriority {
+  score: Float
+  method: String
+  updatedAt: DateTime
+}
+
+# ──────────────────────────────────────────────
+# Workspace and Users
+# ──────────────────────────────────────────────
+
+"""The top-level organizational container in Productboard."""
+type Workspace {
+  id: ID!
+  name: String!
+  slug: String
+  plan: String
+  memberCount: Int
+  createdAt: DateTime!
+  details: WorkspaceDetails
+}
+
+"""Extended configuration details for a Workspace."""
+type WorkspaceDetails {
+  workspaceId: ID!
+  timezone: String
+  defaultCurrency: String
+  ssoEnabled: Boolean
+  auditLogEnabled: Boolean
+  apiKeys: [APIKey!]
+  webhooks: [Webhook!]
+}
+
+"""A customer segment used to group companies or users by shared attributes."""
+type Segment {
+  id: ID!
+  name: String!
+  description: String
+  filterCriteria: JSON
+  companyCount: Int
+  userCount: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  details: SegmentDetails
+}
+
+"""Extended details for a Segment."""
+type SegmentDetails {
+  segmentId: ID!
+  owner: FeatureOwner
+  linkedFeatures: [Feature!]
+  customFields: JSON
+}
+
+# ──────────────────────────────────────────────
+# Customer Feedback
+# ──────────────────────────────────────────────
+
+"""A request from a customer or prospect tied to a Feature."""
+type CustomerRequest {
+  id: ID!
+  featureId: ID!
+  company: CustomerCompany
+  contactEmail: String
+  importance: String
+  mrr: Float
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""A feedback submission from a customer portal."""
+type PortalSubmission {
+  id: ID!
+  portalId: ID!
+  submitterEmail: String
+  submitterName: String
+  title: String!
+  content: String
+  votes: Int
+  status: String
+  linkedFeatureId: ID
+  createdAt: DateTime!
+}
+
+"""A note created from a customer portal submission."""
+type PortalNote {
+  id: ID!
+  portalSubmissionId: ID!
+  content: String!
+  tags: [NoteTag!]
+  linkedFeatureId: ID
+  createdAt: DateTime!
+}
+
+"""A B2B company account linked to customer feedback."""
+type CustomerCompany {
+  id: ID!
+  name: String!
+  domain: String
+  mrr: Float
+  plan: String
+  industry: String
+  size: String
+  segment: Segment
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Raw user feedback note captured from any source."""
+type UserFeedback {
+  id: ID!
+  content: String!
+  source: String
+  authorEmail: String
+  authorName: String
+  company: CustomerCompany
+  tags: [NoteTag!]
+  linkedFeatures: [Feature!]
+  sentiment: InsightSentiment
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+# ──────────────────────────────────────────────
+# Status History
+# ──────────────────────────────────────────────
+
+"""A timestamped record of a Feature status transition."""
+type StatusChangeTimestamp {
+  featureId: ID!
+  fromStatus: FeatureStatus
+  toStatus: FeatureStatus!
+  changedBy: FeatureOwner
+  changedAt: DateTime!
+  note: String
+}
+
+# ──────────────────────────────────────────────
+# Releases
+# ──────────────────────────────────────────────
+
+"""A release milestone grouping features for a delivery window."""
+type Release {
+  id: ID!
+  name: String!
+  description: String
+  releaseDate: DateTime
+  releaseGroup: ReleaseGroup
+  features: [Feature!]
+  status: String
+  archived: Boolean
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  details: ReleaseDetails
+}
+
+"""Extended details for a Release."""
+type ReleaseDetails {
+  releaseId: ID!
+  owner: FeatureOwner
+  featureCount: Int
+  completedFeatureCount: Int
+  customFields: JSON
+}
+
+"""A high-level grouping of multiple Releases (e.g., a quarter or program increment)."""
+type ReleaseGroup {
+  id: ID!
+  name: String!
+  description: String
+  startDate: DateTime
+  endDate: DateTime
+  releases: [Release!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+# ──────────────────────────────────────────────
+# Integrations
+# ──────────────────────────────────────────────
+
+"""A generic push integration connecting Productboard to an external tool."""
+type PushIntegration {
+  id: ID!
+  name: String!
+  type: String!
+  enabled: Boolean
+  workspaceId: ID!
+  configuredAt: DateTime
+  lastSyncedAt: DateTime
+}
+
+"""Jira integration configuration for syncing features to Jira issues."""
+type JiraIntegration {
+  id: ID!
+  workspaceId: ID!
+  jiraSiteUrl: String!
+  projectKey: String
+  issueTypeMapping: JSON
+  statusMapping: JSON
+  enabled: Boolean
+  lastSyncedAt: DateTime
+  createdAt: DateTime!
+}
+
+"""Asana integration configuration for syncing features to Asana tasks."""
+type AsanaIntegration {
+  id: ID!
+  workspaceId: ID!
+  asanaWorkspaceId: String!
+  projectId: String
+  fieldMapping: JSON
+  enabled: Boolean
+  lastSyncedAt: DateTime
+  createdAt: DateTime!
+}
+
+"""Zendesk integration configuration for importing tickets as Notes."""
+type ZendeskIntegration {
+  id: ID!
+  workspaceId: ID!
+  zendeskSubdomain: String!
+  ticketFilterTags: [String!]
+  importAsNote: Boolean
+  enabled: Boolean
+  lastSyncedAt: DateTime
+  createdAt: DateTime!
+}
+
+"""Salesforce integration configuration for syncing opportunities and accounts."""
+type SalesforceIntegration {
+  id: ID!
+  workspaceId: ID!
+  salesforceOrgId: String!
+  objectMapping: JSON
+  syncAccounts: Boolean
+  syncOpportunities: Boolean
+  enabled: Boolean
+  lastSyncedAt: DateTime
+  createdAt: DateTime!
+}
+
+# ──────────────────────────────────────────────
+# Authentication
+# ──────────────────────────────────────────────
+
+"""An API key used to authenticate requests to the Productboard API."""
+type APIKey {
+  id: ID!
+  workspaceId: ID!
+  name: String!
+  prefix: String
+  scopes: [String!]
+  createdBy: FeatureOwner
+  createdAt: DateTime!
+  lastUsedAt: DateTime
+  expiresAt: DateTime
+}
+
+"""An OAuth2 or session token for API access."""
+type Token {
+  id: ID!
+  workspaceId: ID!
+  tokenType: String!
+  scopes: [String!]
+  issuedAt: DateTime!
+  expiresAt: DateTime
+  revokedAt: DateTime
+}
+
+"""A webhook subscription for receiving Productboard platform events."""
+type Webhook {
+  id: ID!
+  workspaceId: ID!
+  url: String!
+  events: [String!]!
+  secret: String
+  enabled: Boolean
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  lastDeliveredAt: DateTime
+  lastDeliveryStatus: String
+}
+
+# ──────────────────────────────────────────────
+# Root Query
+# ──────────────────────────────────────────────
+
+type Query {
+  feature(id: ID!): Feature
+  features(componentId: ID, statusId: ID, archived: Boolean, limit: Int, offset: Int): [Feature!]
+
+  component(id: ID!): Component
+  components(productAreaId: ID, archived: Boolean, limit: Int, offset: Int): [Component!]
+
+  productArea(id: ID!): ProductArea
+  productAreas(limit: Int, offset: Int): [ProductArea!]
+
+  objective(id: ID!): Objective
+  objectives(archived: Boolean, limit: Int, offset: Int): [Objective!]
+
+  keyResult(id: ID!): KeyResult
+  keyResults(objectiveId: ID!, limit: Int, offset: Int): [KeyResult!]
+
+  insight(id: ID!): Insight
+  insights(limit: Int, offset: Int): [Insight!]
+
+  roadmap(id: ID!): Roadmap
+  roadmaps(limit: Int, offset: Int): [Roadmap!]
+
+  release(id: ID!): Release
+  releases(releaseGroupId: ID, limit: Int, offset: Int): [Release!]
+
+  releaseGroup(id: ID!): ReleaseGroup
+  releaseGroups(limit: Int, offset: Int): [ReleaseGroup!]
+
+  workspace(id: ID!): Workspace
+
+  segment(id: ID!): Segment
+  segments(limit: Int, offset: Int): [Segment!]
+
+  customerCompany(id: ID!): CustomerCompany
+  customerCompanies(segmentId: ID, limit: Int, offset: Int): [CustomerCompany!]
+
+  userFeedback(id: ID!): UserFeedback
+  allUserFeedback(companyId: ID, limit: Int, offset: Int): [UserFeedback!]
+
+  portalSubmission(id: ID!): PortalSubmission
+  portalSubmissions(portalId: ID!, limit: Int, offset: Int): [PortalSubmission!]
+
+  webhook(id: ID!): Webhook
+  webhooks(workspaceId: ID!): [Webhook!]
+
+  apiKey(id: ID!): APIKey
+  apiKeys(workspaceId: ID!): [APIKey!]
+
+  jiraIntegration(id: ID!): JiraIntegration
+  asanaIntegration(id: ID!): AsanaIntegration
+  zendeskIntegration(id: ID!): ZendeskIntegration
+  salesforceIntegration(id: ID!): SalesforceIntegration
+
+  column(id: ID!): Column
+  columns(roadmapId: ID, limit: Int, offset: Int): [Column!]
+}

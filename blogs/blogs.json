@@ -3,16 +3,19 @@
   "feeds": [
     {
       "source": "https://www.productboard.com/blog/",
-      "feed_url": "https://www.productboard.com/blog/",
+      "feed_url": "https://www.productboard.com/feed",
       "title": "",
-      "saved": 0,
-      "method": "none"
+      "saved": 1,
+      "method": "discovered"
     },
     {
       "source": "https://support.productboard.com",
-      "error": "HTTPError"
+      "feed_url": "https://support.productboard.com",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 2,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 4,
+  "fetched": "2026-06-27T12:03:07Z"
 }

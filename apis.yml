@@ -41,7 +41,7 @@ apis:
     url: https://developer.productboard.com/v2.0.0/reference/api-token
   - type: OAuth2 Guide
     url: https://developer.productboard.com/docs/how-to-integrate-with-productboard-via-oauth2-developer-documentation
-  - type: Postman Collection
+  - type: PostmanCollection
     url: https://www.postman.com/pb-stargate/productboard-public-api/documentation/cpzbdpj/productboard-api-reference
   - url: graphql/productboard-graphql.md
     type: GraphQL
@@ -54,7 +54,7 @@ common:
   url: https://developer.productboard.com
 - type: Pricing
   url: https://www.productboard.com/pricing/
-- type: SignUp
+- type: Signup
   url: https://www.productboard.com/trial/
 - type: Support
   url: https://support.productboard.com
@@ -64,7 +64,7 @@ common:
   url: https://status.productboard.com
 - type: LinkedIn
   url: https://www.linkedin.com/company/productboard/
-- type: LLMsTxt
+- type: LlmsText
   url: https://developer.productboard.com/llms.txt
 maintainers:
 - FN: Kin Lane

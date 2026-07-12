@@ -46,6 +46,12 @@ apis:
   - url: graphql/productboard-graphql.md
     type: GraphQL
 common:
+- type: TrustCenter
+  url: security/productboard-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/productboard-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/productboard-domain-security.yml
 - type: GitHubOrganization
   url: https://github.com/productboard
 - type: Website

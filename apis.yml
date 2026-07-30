@@ -7,7 +7,18 @@ description: Productboard is a product management platform that helps product te
   products, notes, users, companies, objectives, releases, and webhooks at https://api.productboard.com,
   with authentication via a Public API Access token (Bearer) or OAuth2.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/productboard.png
 tags:
 - Product Management
 - Roadmapping

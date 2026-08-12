@@ -32,10 +32,10 @@ specificationVersion: '0.19'
 apis:
 - aid: productboard:public-api
   name: Productboard Public API
-  description: REST API for managing features, components, products, notes (customer
-    feedback), users, companies, objectives, releases, and webhooks within Productboard.
-    Supports both v1 and v2 endpoints. Authentication uses Bearer tokens (Public API
-    Access token) or OAuth2 for multi-tenant integrations.
+  description: >-
+    REST API for managing features, components, products, notes (customer feedback), users, companies,
+    objectives, releases, and webhooks within Productboard. Supports both v1 and v2 endpoints. Authentication
+    uses Bearer tokens (Public API Access token) or OAuth2 for multi-tenant integrations.
   humanURL: https://developer.productboard.com/
   baseURL: https://api.productboard.com
   tags:
@@ -51,11 +51,114 @@ apis:
   - type: API Token Authentication
     url: https://developer.productboard.com/v2.0.0/reference/api-token
   - type: OAuth2 Guide
-    url: https://developer.productboard.com/docs/how-to-integrate-with-productboard-via-oauth2-developer-documentation
+    url: >-
+      https://developer.productboard.com/docs/how-to-integrate-with-productboard-via-oauth2-developer-documentation
   - type: PostmanCollection
-    url: https://www.postman.com/pb-stargate/productboard-public-api/documentation/cpzbdpj/productboard-api-reference
+    url: >-
+      https://www.postman.com/pb-stargate/productboard-public-api/documentation/cpzbdpj/productboard-api-reference
   - url: graphql/productboard-graphql.md
     type: GraphQL
+- aid: productboard:productboard-entities-api
+  name: Productboard Entities API
+  description: The Entities API from Productboard — 5 operation(s) for entities.
+  humanURL: https://developer.productboard.com/
+  baseURL: https://api.productboard.com
+  tags:
+  - Entities
+  properties:
+  - type: OpenAPI
+    url: openapi/productboard-entities-api-openapi.yml
+- aid: productboard:productboard-entity-field-values-api
+  name: Productboard Entity Field Values API
+  description: The Entity Field Values API from Productboard — 2 operation(s) for entity field values.
+  humanURL: https://developer.productboard.com/
+  baseURL: https://api.productboard.com
+  tags:
+  - Entity Field Values
+  properties:
+  - type: OpenAPI
+    url: openapi/productboard-entity-field-values-api-openapi.yml
+- aid: productboard:productboard-entity-relationships-api
+  name: Productboard Entity Relationships API
+  description: >-
+    The Entity Relationships API from Productboard — 2 operation(s) for entity relationships.
+  humanURL: https://developer.productboard.com/
+  baseURL: https://api.productboard.com
+  tags:
+  - Entity Relationships
+  properties:
+  - type: OpenAPI
+    url: openapi/productboard-entity-relationships-api-openapi.yml
+- aid: productboard:productboard-jira-integrations-api
+  name: Productboard Jira Integrations API
+  description: The Jira Integrations API from Productboard — 4 operation(s) for jira integrations.
+  humanURL: https://developer.productboard.com/
+  baseURL: https://api.productboard.com
+  tags:
+  - Jira Integrations
+  properties:
+  - type: OpenAPI
+    url: openapi/productboard-jira-integrations-api-openapi.yml
+- aid: productboard:productboard-members-api
+  name: Productboard Members API
+  description: The Members API from Productboard — 4 operation(s) for members.
+  humanURL: https://developer.productboard.com/
+  baseURL: https://api.productboard.com
+  tags:
+  - Members
+  properties:
+  - type: OpenAPI
+    url: openapi/productboard-members-api-openapi.yml
+- aid: productboard:productboard-note-relationships-api
+  name: Productboard Note Relationships API
+  description: The Note Relationships API from Productboard — 3 operation(s) for note relationships.
+  humanURL: https://developer.productboard.com/
+  baseURL: https://api.productboard.com
+  tags:
+  - Note Relationships
+  properties:
+  - type: OpenAPI
+    url: openapi/productboard-note-relationships-api-openapi.yml
+- aid: productboard:productboard-notes-api
+  name: Productboard Notes API
+  description: The Notes API from Productboard — 5 operation(s) for notes.
+  humanURL: https://developer.productboard.com/
+  baseURL: https://api.productboard.com
+  tags:
+  - Notes
+  properties:
+  - type: OpenAPI
+    url: openapi/productboard-notes-api-openapi.yml
+- aid: productboard:productboard-plugin-integrations-api
+  name: Productboard Plugin Integrations API
+  description: The Plugin Integrations API from Productboard — 5 operation(s) for plugin integrations.
+  humanURL: https://developer.productboard.com/
+  baseURL: https://api.productboard.com
+  tags:
+  - Plugin Integrations
+  properties:
+  - type: OpenAPI
+    url: openapi/productboard-plugin-integrations-api-openapi.yml
+- aid: productboard:productboard-teams-api
+  name: Productboard Teams API
+  description: The Teams API from Productboard — 4 operation(s) for teams.
+  humanURL: https://developer.productboard.com/
+  baseURL: https://api.productboard.com
+  tags:
+  - Teams
+  properties:
+  - type: OpenAPI
+    url: openapi/productboard-teams-api-openapi.yml
+- aid: productboard:productboard-webhooks-api
+  name: Productboard Webhooks API
+  description: The Webhooks API from Productboard — 2 operation(s) for webhooks.
+  humanURL: https://developer.productboard.com/
+  baseURL: https://api.productboard.com
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/productboard-webhooks-api-openapi.yml
 common:
 - type: TrustCenter
   url: security/productboard-trust-center.yml

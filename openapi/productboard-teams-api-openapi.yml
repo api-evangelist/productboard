@@ -1,0 +1,103 @@
+openapi: 3.2.0
+info:
+  title: Productboard Public Teams API
+  description: 'REST API v2 for managing entities (products, features, components, initiatives), notes
+
+    (customer feedback), members, teams, Jira and plugin integrations, and webhooks within
+
+    Productboard. Authentication uses Personal API Tokens (Bearer) or OAuth 2.0
+
+    (authorization code or server-to-server JWT). Uses cursor-based pagination.
+
+    '
+  version: 2.0.0
+  contact:
+    name: Productboard Developer
+    url: https://developer.productboard.com/
+servers:
+- url: https://api.productboard.com/v2
+  description: Productboard REST API v2 base URL
+security:
+- bearerAuth: []
+- oauth2: []
+tags:
+- name: Teams
+paths:
+  /teams:
+    get:
+      tags:
+      - Teams
+      summary: List teams
+      responses:
+        '200':
+          description: Team list
+    post:
+      tags:
+      - Teams
+      summary: Create team
+      responses:
+        '201':
+          description: Team created
+  /teams/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Teams
+      summary: Retrieve team
+      responses:
+        '200':
+          description: Team record
+    patch:
+      tags:
+      - Teams
+      summary: Update team
+      responses:
+        '200':
+          description: Team updated
+    delete:
+      tags:
+      - Teams
+      summary: Delete team
+      responses:
+        '204':
+          description: Team deleted
+  /teams/search:
+    post:
+      tags:
+      - Teams
+      summary: Search teams
+      responses:
+        '200':
+          description: Search results
+  /teams/{id}/members:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Teams
+      summary: List team members
+      responses:
+        '200':
+          description: Team member list
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Personal API Access Token passed as `Authorization: Bearer <token>`.'
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.productboard.com/oauth2/authorize
+          tokenUrl: https://app.productboard.com/oauth2/token
+          scopes: {}

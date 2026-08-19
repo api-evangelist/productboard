@@ -1,0 +1,96 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Productboard Public Entity Relationships API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Entity Relationships",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List entity relationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.productboard.com/v2/entities/:id/relationships",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List entity relationships"
+        },
+        {
+          "info": {
+            "name": "Create relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.productboard.com/v2/entities/:id/relationships",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create relationship"
+        },
+        {
+          "info": {
+            "name": "Remove relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.productboard.com/v2/entities/:id/relationships",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove relationship"
+        },
+        {
+          "info": {
+            "name": "Set or replace parent",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.productboard.com/v2/entities/:id/relationships/parent",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set or replace parent"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

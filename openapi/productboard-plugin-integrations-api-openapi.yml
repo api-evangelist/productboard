@@ -1,0 +1,142 @@
+openapi: 3.2.0
+info:
+  title: Productboard Public Plugin Integrations API
+  description: 'REST API v2 for managing entities (products, features, components, initiatives), notes
+
+    (customer feedback), members, teams, Jira and plugin integrations, and webhooks within
+
+    Productboard. Authentication uses Personal API Tokens (Bearer) or OAuth 2.0
+
+    (authorization code or server-to-server JWT). Uses cursor-based pagination.
+
+    '
+  version: 2.0.0
+  contact:
+    name: Productboard Developer
+    url: https://developer.productboard.com/
+servers:
+- url: https://api.productboard.com/v2
+  description: Productboard REST API v2 base URL
+security:
+- bearerAuth: []
+- oauth2: []
+tags:
+- name: Plugin Integrations
+paths:
+  /plugin-integrations:
+    get:
+      tags:
+      - Plugin Integrations
+      summary: List plugin integrations
+      responses:
+        '200':
+          description: Integration list
+    post:
+      tags:
+      - Plugin Integrations
+      summary: Create plugin integration
+      responses:
+        '201':
+          description: Integration created
+  /plugin-integrations/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Plugin Integrations
+      summary: Get plugin integration
+      responses:
+        '200':
+          description: Integration record
+    patch:
+      tags:
+      - Plugin Integrations
+      summary: Update plugin integration
+      responses:
+        '200':
+          description: Integration updated
+    delete:
+      tags:
+      - Plugin Integrations
+      summary: Delete plugin integration
+      responses:
+        '204':
+          description: Integration deleted
+  /plugin-integrations/{id}/connections:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Plugin Integrations
+      summary: List connections
+      responses:
+        '200':
+          description: Connection list
+  /plugin-integrations/{id}/connections/{entityId}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: entityId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Plugin Integrations
+      summary: Get entity connection
+      responses:
+        '200':
+          description: Connection record
+    put:
+      tags:
+      - Plugin Integrations
+      summary: Create or update connection state
+      responses:
+        '200':
+          description: Connection upserted
+    delete:
+      tags:
+      - Plugin Integrations
+      summary: Delete connection
+      responses:
+        '204':
+          description: Connection deleted
+  /plugin-integrations/{id}/connections/search:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - Plugin Integrations
+      summary: Search connections
+      responses:
+        '200':
+          description: Search results
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Personal API Access Token passed as `Authorization: Bearer <token>`.'
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.productboard.com/oauth2/authorize
+          tokenUrl: https://app.productboard.com/oauth2/token
+          scopes: {}

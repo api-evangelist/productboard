@@ -1,0 +1,148 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Productboard Public Notes API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Notes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.productboard.com/v2/notes",
+            "params": [
+              {
+                "name": "pageCursor",
+                "value": "",
+                "type": "query",
+                "description": "Cursor returned in `links.next` for paginated responses."
+              }
+            ]
+          },
+          "docs": "List notes"
+        },
+        {
+          "info": {
+            "name": "Create note (textNote or conversationNote)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.productboard.com/v2/notes"
+          },
+          "docs": "Create note (textNote or conversationNote)"
+        },
+        {
+          "info": {
+            "name": "Retrieve note",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.productboard.com/v2/notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve note"
+        },
+        {
+          "info": {
+            "name": "Update note",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.productboard.com/v2/notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update note"
+        },
+        {
+          "info": {
+            "name": "Delete note permanently",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.productboard.com/v2/notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete note permanently"
+        },
+        {
+          "info": {
+            "name": "Search notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.productboard.com/v2/notes/search"
+          },
+          "docs": "Search notes"
+        },
+        {
+          "info": {
+            "name": "List note type configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.productboard.com/v2/notes/configurations"
+          },
+          "docs": "List note type configurations"
+        },
+        {
+          "info": {
+            "name": "Get configuration for note type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.productboard.com/v2/notes/configurations/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get configuration for note type"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,85 @@
+openapi: 3.2.0
+info:
+  title: Productboard Public Entity Field Values API
+  description: 'REST API v2 for managing entities (products, features, components, initiatives), notes
+
+    (customer feedback), members, teams, Jira and plugin integrations, and webhooks within
+
+    Productboard. Authentication uses Personal API Tokens (Bearer) or OAuth 2.0
+
+    (authorization code or server-to-server JWT). Uses cursor-based pagination.
+
+    '
+  version: 2.0.0
+  contact:
+    name: Productboard Developer
+    url: https://developer.productboard.com/
+servers:
+- url: https://api.productboard.com/v2
+  description: Productboard REST API v2 base URL
+security:
+- bearerAuth: []
+- oauth2: []
+tags:
+- name: Entity Field Values
+paths:
+  /entities/fields/{fieldId}/values:
+    parameters:
+    - name: fieldId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Entity Field Values
+      summary: List field values
+      responses:
+        '200':
+          description: Field values
+    post:
+      tags:
+      - Entity Field Values
+      summary: Create field option
+      responses:
+        '201':
+          description: Field option created
+  /entities/fields/{fieldId}/values/{valueId}:
+    parameters:
+    - name: fieldId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: valueId
+      in: path
+      required: true
+      schema:
+        type: string
+    patch:
+      tags:
+      - Entity Field Values
+      summary: Update field value
+      responses:
+        '200':
+          description: Value updated
+    delete:
+      tags:
+      - Entity Field Values
+      summary: Delete field value
+      responses:
+        '204':
+          description: Value deleted
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Personal API Access Token passed as `Authorization: Bearer <token>`.'
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.productboard.com/oauth2/authorize
+          tokenUrl: https://app.productboard.com/oauth2/token
+          scopes: {}

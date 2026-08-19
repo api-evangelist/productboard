@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Productboard Public Members API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Members",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List workspace members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.productboard.com/v2/members"
+          },
+          "docs": "List workspace members"
+        },
+        {
+          "info": {
+            "name": "Retrieve member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.productboard.com/v2/members/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve member"
+        },
+        {
+          "info": {
+            "name": "Search members",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.productboard.com/v2/members/search"
+          },
+          "docs": "Search members"
+        },
+        {
+          "info": {
+            "name": "List member activity data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.productboard.com/v2/members/:id/activities",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List member activity data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

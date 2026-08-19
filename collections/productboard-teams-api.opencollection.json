@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Productboard Public Teams API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Teams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List teams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.productboard.com/v2/teams"
+          },
+          "docs": "List teams"
+        },
+        {
+          "info": {
+            "name": "Create team",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.productboard.com/v2/teams"
+          },
+          "docs": "Create team"
+        },
+        {
+          "info": {
+            "name": "Retrieve team",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.productboard.com/v2/teams/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve team"
+        },
+        {
+          "info": {
+            "name": "Update team",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.productboard.com/v2/teams/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update team"
+        },
+        {
+          "info": {
+            "name": "Delete team",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.productboard.com/v2/teams/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete team"
+        },
+        {
+          "info": {
+            "name": "Search teams",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.productboard.com/v2/teams/search"
+          },
+          "docs": "Search teams"
+        },
+        {
+          "info": {
+            "name": "List team members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.productboard.com/v2/teams/:id/members",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List team members"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

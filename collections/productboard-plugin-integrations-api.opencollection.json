@@ -1,0 +1,205 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Productboard Public Plugin Integrations API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Plugin Integrations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List plugin integrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.productboard.com/v2/plugin-integrations"
+          },
+          "docs": "List plugin integrations"
+        },
+        {
+          "info": {
+            "name": "Create plugin integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.productboard.com/v2/plugin-integrations"
+          },
+          "docs": "Create plugin integration"
+        },
+        {
+          "info": {
+            "name": "Get plugin integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.productboard.com/v2/plugin-integrations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get plugin integration"
+        },
+        {
+          "info": {
+            "name": "Update plugin integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.productboard.com/v2/plugin-integrations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update plugin integration"
+        },
+        {
+          "info": {
+            "name": "Delete plugin integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.productboard.com/v2/plugin-integrations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete plugin integration"
+        },
+        {
+          "info": {
+            "name": "List connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.productboard.com/v2/plugin-integrations/:id/connections",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List connections"
+        },
+        {
+          "info": {
+            "name": "Get entity connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.productboard.com/v2/plugin-integrations/:id/connections/:entityId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get entity connection"
+        },
+        {
+          "info": {
+            "name": "Create or update connection state",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.productboard.com/v2/plugin-integrations/:id/connections/:entityId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create or update connection state"
+        },
+        {
+          "info": {
+            "name": "Delete connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.productboard.com/v2/plugin-integrations/:id/connections/:entityId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete connection"
+        },
+        {
+          "info": {
+            "name": "Search connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.productboard.com/v2/plugin-integrations/:id/connections/search",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Search connections"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

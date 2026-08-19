@@ -1,0 +1,148 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Productboard Public Entities API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Entities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List entities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.productboard.com/v2/entities",
+            "params": [
+              {
+                "name": "pageCursor",
+                "value": "",
+                "type": "query",
+                "description": "Cursor returned in `links.next` for paginated responses."
+              }
+            ]
+          },
+          "docs": "List entities with filtering and pagination."
+        },
+        {
+          "info": {
+            "name": "Create entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.productboard.com/v2/entities"
+          },
+          "docs": "Create entity"
+        },
+        {
+          "info": {
+            "name": "Retrieve entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.productboard.com/v2/entities/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve entity"
+        },
+        {
+          "info": {
+            "name": "Update entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.productboard.com/v2/entities/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update entity"
+        },
+        {
+          "info": {
+            "name": "Delete entity (cascading)",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.productboard.com/v2/entities/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete entity (cascading)"
+        },
+        {
+          "info": {
+            "name": "Advanced entity search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.productboard.com/v2/entities/search"
+          },
+          "docs": "Advanced entity search"
+        },
+        {
+          "info": {
+            "name": "List entity type configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.productboard.com/v2/entities/configurations"
+          },
+          "docs": "List entity type configurations"
+        },
+        {
+          "info": {
+            "name": "Get configuration for entity type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.productboard.com/v2/entities/configurations/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get configuration for entity type"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

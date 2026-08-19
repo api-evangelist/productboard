@@ -1,0 +1,121 @@
+openapi: 3.2.0
+info:
+  title: Productboard Public Notes API
+  description: 'REST API v2 for managing entities (products, features, components, initiatives), notes
+
+    (customer feedback), members, teams, Jira and plugin integrations, and webhooks within
+
+    Productboard. Authentication uses Personal API Tokens (Bearer) or OAuth 2.0
+
+    (authorization code or server-to-server JWT). Uses cursor-based pagination.
+
+    '
+  version: 2.0.0
+  contact:
+    name: Productboard Developer
+    url: https://developer.productboard.com/
+servers:
+- url: https://api.productboard.com/v2
+  description: Productboard REST API v2 base URL
+security:
+- bearerAuth: []
+- oauth2: []
+tags:
+- name: Notes
+paths:
+  /notes:
+    get:
+      tags:
+      - Notes
+      summary: List notes
+      parameters:
+      - $ref: '#/components/parameters/PageCursor'
+      responses:
+        '200':
+          description: Paged list of notes
+    post:
+      tags:
+      - Notes
+      summary: Create note (textNote or conversationNote)
+      responses:
+        '201':
+          description: Note created
+  /notes/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Notes
+      summary: Retrieve note
+      responses:
+        '200':
+          description: Note record
+    patch:
+      tags:
+      - Notes
+      summary: Update note
+      responses:
+        '200':
+          description: Note updated
+    delete:
+      tags:
+      - Notes
+      summary: Delete note permanently
+      responses:
+        '204':
+          description: Note deleted
+  /notes/search:
+    post:
+      tags:
+      - Notes
+      summary: Search notes
+      responses:
+        '200':
+          description: Search results
+  /notes/configurations:
+    get:
+      tags:
+      - Notes
+      summary: List note type configurations
+      responses:
+        '200':
+          description: Configuration list
+  /notes/configurations/{type}:
+    parameters:
+    - name: type
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Notes
+      summary: Get configuration for note type
+      responses:
+        '200':
+          description: Configuration record
+components:
+  parameters:
+    PageCursor:
+      name: pageCursor
+      in: query
+      description: Cursor returned in `links.next` for paginated responses.
+      required: false
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Personal API Access Token passed as `Authorization: Bearer <token>`.'
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.productboard.com/oauth2/authorize
+          tokenUrl: https://app.productboard.com/oauth2/token
+          scopes: {}

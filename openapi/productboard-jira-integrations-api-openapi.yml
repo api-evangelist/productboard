@@ -1,0 +1,93 @@
+openapi: 3.2.0
+info:
+  title: Productboard Public Jira Integrations API
+  description: 'REST API v2 for managing entities (products, features, components, initiatives), notes
+
+    (customer feedback), members, teams, Jira and plugin integrations, and webhooks within
+
+    Productboard. Authentication uses Personal API Tokens (Bearer) or OAuth 2.0
+
+    (authorization code or server-to-server JWT). Uses cursor-based pagination.
+
+    '
+  version: 2.0.0
+  contact:
+    name: Productboard Developer
+    url: https://developer.productboard.com/
+servers:
+- url: https://api.productboard.com/v2
+  description: Productboard REST API v2 base URL
+security:
+- bearerAuth: []
+- oauth2: []
+tags:
+- name: Jira Integrations
+paths:
+  /jira-integrations:
+    get:
+      tags:
+      - Jira Integrations
+      summary: List Jira integrations
+      responses:
+        '200':
+          description: Integration list
+  /jira-integrations/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Jira Integrations
+      summary: Get Jira integration
+      responses:
+        '200':
+          description: Integration record
+  /jira-integrations/{id}/connections:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Jira Integrations
+      summary: List feature-to-issue connections
+      responses:
+        '200':
+          description: Connection list
+  /jira-integrations/{id}/connections/{entityId}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: entityId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Jira Integrations
+      summary: Get specific connection
+      responses:
+        '200':
+          description: Connection record
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Personal API Access Token passed as `Authorization: Bearer <token>`.'
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.productboard.com/oauth2/authorize
+          tokenUrl: https://app.productboard.com/oauth2/token
+          scopes: {}

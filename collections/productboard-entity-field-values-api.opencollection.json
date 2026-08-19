@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Productboard Public Entity Field Values API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Entity Field Values",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List field values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.productboard.com/v2/entities/fields/:fieldId/values",
+            "params": [
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List field values"
+        },
+        {
+          "info": {
+            "name": "Create field option",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.productboard.com/v2/entities/fields/:fieldId/values",
+            "params": [
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create field option"
+        },
+        {
+          "info": {
+            "name": "Update field value",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.productboard.com/v2/entities/fields/:fieldId/values/:valueId",
+            "params": [
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "valueId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update field value"
+        },
+        {
+          "info": {
+            "name": "Delete field value",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.productboard.com/v2/entities/fields/:fieldId/values/:valueId",
+            "params": [
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "valueId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete field value"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

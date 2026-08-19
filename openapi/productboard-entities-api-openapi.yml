@@ -1,0 +1,124 @@
+openapi: 3.2.0
+info:
+  title: Productboard Public Entities API
+  description: 'REST API v2 for managing entities (products, features, components, initiatives), notes
+
+    (customer feedback), members, teams, Jira and plugin integrations, and webhooks within
+
+    Productboard. Authentication uses Personal API Tokens (Bearer) or OAuth 2.0
+
+    (authorization code or server-to-server JWT). Uses cursor-based pagination.
+
+    '
+  version: 2.0.0
+  contact:
+    name: Productboard Developer
+    url: https://developer.productboard.com/
+servers:
+- url: https://api.productboard.com/v2
+  description: Productboard REST API v2 base URL
+security:
+- bearerAuth: []
+- oauth2: []
+tags:
+- name: Entities
+paths:
+  /entities:
+    get:
+      tags:
+      - Entities
+      summary: List entities
+      description: List entities with filtering and pagination.
+      parameters:
+      - $ref: '#/components/parameters/PageCursor'
+      responses:
+        '200':
+          description: Paged list of entities
+    post:
+      tags:
+      - Entities
+      summary: Create entity
+      responses:
+        '201':
+          description: Entity created
+  /entities/{id}:
+    parameters:
+    - $ref: '#/components/parameters/EntityId'
+    get:
+      tags:
+      - Entities
+      summary: Retrieve entity
+      responses:
+        '200':
+          description: Entity record
+    patch:
+      tags:
+      - Entities
+      summary: Update entity
+      responses:
+        '200':
+          description: Entity updated
+    delete:
+      tags:
+      - Entities
+      summary: Delete entity (cascading)
+      responses:
+        '204':
+          description: Entity deleted
+  /entities/search:
+    post:
+      tags:
+      - Entities
+      summary: Advanced entity search
+      responses:
+        '200':
+          description: Search results
+  /entities/configurations:
+    get:
+      tags:
+      - Entities
+      summary: List entity type configurations
+      responses:
+        '200':
+          description: Configuration list
+  /entities/configurations/{type}:
+    parameters:
+    - name: type
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Entities
+      summary: Get configuration for entity type
+      responses:
+        '200':
+          description: Configuration record
+components:
+  parameters:
+    EntityId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    PageCursor:
+      name: pageCursor
+      in: query
+      description: Cursor returned in `links.next` for paginated responses.
+      required: false
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Personal API Access Token passed as `Authorization: Bearer <token>`.'
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.productboard.com/oauth2/authorize
+          tokenUrl: https://app.productboard.com/oauth2/token
+          scopes: {}

@@ -1,0 +1,44 @@
+{
+  "provider": "productboard",
+  "sources": [
+    "productboard-entities-api-openapi.yml",
+    "productboard-entity-field-values-api-openapi.yml",
+    "productboard-entity-relationships-api-openapi.yml",
+    "productboard-jira-integrations-api-openapi.yml",
+    "productboard-members-api-openapi.yml",
+    "productboard-note-relationships-api-openapi.yml",
+    "productboard-notes-api-openapi.yml",
+    "productboard-plugin-integrations-api-openapi.yml",
+    "productboard-teams-api-openapi.yml",
+    "productboard-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "productboard-entities-api-openapi.yml",
+    "productboard-entity-field-values-api-openapi.yml",
+    "productboard-entity-relationships-api-openapi.yml",
+    "productboard-jira-integrations-api-openapi.yml",
+    "productboard-members-api-openapi.yml",
+    "productboard-note-relationships-api-openapi.yml",
+    "productboard-notes-api-openapi.yml",
+    "productboard-plugin-integrations-api-openapi.yml",
+    "productboard-teams-api-openapi.yml",
+    "productboard-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "productboard-entities-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "productboard-entity-field-values-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "productboard-entity-relationships-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "productboard-jira-integrations-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "productboard-members-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "productboard-note-relationships-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "productboard-notes-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "productboard-plugin-integrations-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "productboard-teams-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "productboard-webhooks-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": []
+}

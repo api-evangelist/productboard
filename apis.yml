@@ -7,6 +7,18 @@ description: Productboard is a product management platform that helps product te
   products, notes, users, companies, objectives, releases, and webhooks at https://api.productboard.com,
   with authentication via a Public API Access token (Bearer) or OAuth2.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown

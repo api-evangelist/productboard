@@ -7,9 +7,7 @@ info:
 
     Productboard. Authentication uses Personal API Tokens (Bearer) or OAuth 2.0
 
-    (authorization code or server-to-server JWT). Uses cursor-based pagination.
-
-    '
+    (authorization code or server-to-server JWT). Uses cursor-based pagination.'
   version: 2.0.0
   contact:
     name: Productboard Developer
@@ -31,6 +29,8 @@ paths:
       responses:
         '200':
           description: Integration list
+      operationId: getPluginIntegrations
+      x-operation-id-source: derived
     post:
       tags:
       - Plugin Integrations
@@ -38,6 +38,8 @@ paths:
       responses:
         '201':
           description: Integration created
+      operationId: postPluginIntegrations
+      x-operation-id-source: derived
   /plugin-integrations/{id}:
     parameters:
     - name: id
@@ -52,6 +54,8 @@ paths:
       responses:
         '200':
           description: Integration record
+      operationId: getPluginIntegrationsById
+      x-operation-id-source: derived
     patch:
       tags:
       - Plugin Integrations
@@ -59,6 +63,8 @@ paths:
       responses:
         '200':
           description: Integration updated
+      operationId: patchPluginIntegrationsById
+      x-operation-id-source: derived
     delete:
       tags:
       - Plugin Integrations
@@ -66,6 +72,8 @@ paths:
       responses:
         '204':
           description: Integration deleted
+      operationId: deletePluginIntegrationsById
+      x-operation-id-source: derived
   /plugin-integrations/{id}/connections:
     parameters:
     - name: id
@@ -80,6 +88,8 @@ paths:
       responses:
         '200':
           description: Connection list
+      operationId: getPluginIntegrationsByIdConnections
+      x-operation-id-source: derived
   /plugin-integrations/{id}/connections/{entityId}:
     parameters:
     - name: id
@@ -99,6 +109,8 @@ paths:
       responses:
         '200':
           description: Connection record
+      operationId: getPluginIntegrationsByIdConnectionsByEntityId
+      x-operation-id-source: derived
     put:
       tags:
       - Plugin Integrations
@@ -106,6 +118,8 @@ paths:
       responses:
         '200':
           description: Connection upserted
+      operationId: putPluginIntegrationsByIdConnectionsByEntityId
+      x-operation-id-source: derived
     delete:
       tags:
       - Plugin Integrations
@@ -113,6 +127,8 @@ paths:
       responses:
         '204':
           description: Connection deleted
+      operationId: deletePluginIntegrationsByIdConnectionsByEntityId
+      x-operation-id-source: derived
   /plugin-integrations/{id}/connections/search:
     parameters:
     - name: id
@@ -127,6 +143,8 @@ paths:
       responses:
         '200':
           description: Search results
+      operationId: postPluginIntegrationsByIdConnectionsSearch
+      x-operation-id-source: derived
 components:
   securitySchemes:
     bearerAuth:

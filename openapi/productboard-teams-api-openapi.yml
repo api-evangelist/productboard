@@ -7,9 +7,7 @@ info:
 
     Productboard. Authentication uses Personal API Tokens (Bearer) or OAuth 2.0
 
-    (authorization code or server-to-server JWT). Uses cursor-based pagination.
-
-    '
+    (authorization code or server-to-server JWT). Uses cursor-based pagination.'
   version: 2.0.0
   contact:
     name: Productboard Developer
@@ -31,6 +29,8 @@ paths:
       responses:
         '200':
           description: Team list
+      operationId: getTeams
+      x-operation-id-source: derived
     post:
       tags:
       - Teams
@@ -38,6 +38,8 @@ paths:
       responses:
         '201':
           description: Team created
+      operationId: postTeams
+      x-operation-id-source: derived
   /teams/{id}:
     parameters:
     - name: id
@@ -52,6 +54,8 @@ paths:
       responses:
         '200':
           description: Team record
+      operationId: getTeamsById
+      x-operation-id-source: derived
     patch:
       tags:
       - Teams
@@ -59,6 +63,8 @@ paths:
       responses:
         '200':
           description: Team updated
+      operationId: patchTeamsById
+      x-operation-id-source: derived
     delete:
       tags:
       - Teams
@@ -66,6 +72,8 @@ paths:
       responses:
         '204':
           description: Team deleted
+      operationId: deleteTeamsById
+      x-operation-id-source: derived
   /teams/search:
     post:
       tags:
@@ -74,6 +82,8 @@ paths:
       responses:
         '200':
           description: Search results
+      operationId: postTeamsSearch
+      x-operation-id-source: derived
   /teams/{id}/members:
     parameters:
     - name: id
@@ -88,6 +98,8 @@ paths:
       responses:
         '200':
           description: Team member list
+      operationId: getTeamsByIdMembers
+      x-operation-id-source: derived
 components:
   securitySchemes:
     bearerAuth:

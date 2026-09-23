@@ -7,9 +7,7 @@ info:
 
     Productboard. Authentication uses Personal API Tokens (Bearer) or OAuth 2.0
 
-    (authorization code or server-to-server JWT). Uses cursor-based pagination.
-
-    '
+    (authorization code or server-to-server JWT). Uses cursor-based pagination.'
   version: 2.0.0
   contact:
     name: Productboard Developer
@@ -31,6 +29,8 @@ paths:
       responses:
         '200':
           description: Webhook list
+      operationId: getWebhooks
+      x-operation-id-source: derived
     post:
       tags:
       - Webhooks
@@ -38,6 +38,8 @@ paths:
       responses:
         '201':
           description: Webhook created
+      operationId: postWebhooks
+      x-operation-id-source: derived
   /webhooks/{id}:
     parameters:
     - name: id
@@ -52,6 +54,8 @@ paths:
       responses:
         '200':
           description: Webhook record
+      operationId: getWebhooksById
+      x-operation-id-source: derived
     delete:
       tags:
       - Webhooks
@@ -59,6 +63,8 @@ paths:
       responses:
         '204':
           description: Webhook deleted
+      operationId: deleteWebhooksById
+      x-operation-id-source: derived
 components:
   securitySchemes:
     bearerAuth:

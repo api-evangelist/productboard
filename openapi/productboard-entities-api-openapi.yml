@@ -7,9 +7,7 @@ info:
 
     Productboard. Authentication uses Personal API Tokens (Bearer) or OAuth 2.0
 
-    (authorization code or server-to-server JWT). Uses cursor-based pagination.
-
-    '
+    (authorization code or server-to-server JWT). Uses cursor-based pagination.'
   version: 2.0.0
   contact:
     name: Productboard Developer
@@ -34,6 +32,8 @@ paths:
       responses:
         '200':
           description: Paged list of entities
+      operationId: getEntities
+      x-operation-id-source: derived
     post:
       tags:
       - Entities
@@ -41,6 +41,8 @@ paths:
       responses:
         '201':
           description: Entity created
+      operationId: postEntities
+      x-operation-id-source: derived
   /entities/{id}:
     parameters:
     - $ref: '#/components/parameters/EntityId'
@@ -51,6 +53,8 @@ paths:
       responses:
         '200':
           description: Entity record
+      operationId: getEntitiesById
+      x-operation-id-source: derived
     patch:
       tags:
       - Entities
@@ -58,6 +62,8 @@ paths:
       responses:
         '200':
           description: Entity updated
+      operationId: patchEntitiesById
+      x-operation-id-source: derived
     delete:
       tags:
       - Entities
@@ -65,6 +71,8 @@ paths:
       responses:
         '204':
           description: Entity deleted
+      operationId: deleteEntitiesById
+      x-operation-id-source: derived
   /entities/search:
     post:
       tags:
@@ -73,6 +81,8 @@ paths:
       responses:
         '200':
           description: Search results
+      operationId: postEntitiesSearch
+      x-operation-id-source: derived
   /entities/configurations:
     get:
       tags:
@@ -81,6 +91,8 @@ paths:
       responses:
         '200':
           description: Configuration list
+      operationId: getEntitiesConfigurations
+      x-operation-id-source: derived
   /entities/configurations/{type}:
     parameters:
     - name: type
@@ -95,19 +107,21 @@ paths:
       responses:
         '200':
           description: Configuration record
+      operationId: getEntitiesConfigurationsByType
+      x-operation-id-source: derived
 components:
   parameters:
-    EntityId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
     PageCursor:
       name: pageCursor
       in: query
       description: Cursor returned in `links.next` for paginated responses.
       required: false
+      schema:
+        type: string
+    EntityId:
+      name: id
+      in: path
+      required: true
       schema:
         type: string
   securitySchemes:

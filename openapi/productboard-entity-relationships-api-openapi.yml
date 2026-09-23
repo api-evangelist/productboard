@@ -7,9 +7,7 @@ info:
 
     Productboard. Authentication uses Personal API Tokens (Bearer) or OAuth 2.0
 
-    (authorization code or server-to-server JWT). Uses cursor-based pagination.
-
-    '
+    (authorization code or server-to-server JWT). Uses cursor-based pagination.'
   version: 2.0.0
   contact:
     name: Productboard Developer
@@ -33,6 +31,8 @@ paths:
       responses:
         '200':
           description: Relationship list
+      operationId: getEntitiesByIdRelationships
+      x-operation-id-source: derived
     post:
       tags:
       - Entity Relationships
@@ -40,6 +40,8 @@ paths:
       responses:
         '201':
           description: Relationship created
+      operationId: postEntitiesByIdRelationships
+      x-operation-id-source: derived
     delete:
       tags:
       - Entity Relationships
@@ -47,6 +49,8 @@ paths:
       responses:
         '204':
           description: Relationship removed
+      operationId: deleteEntitiesByIdRelationships
+      x-operation-id-source: derived
   /entities/{id}/relationships/parent:
     parameters:
     - $ref: '#/components/parameters/EntityId'
@@ -57,6 +61,8 @@ paths:
       responses:
         '200':
           description: Parent set
+      operationId: putEntitiesByIdRelationshipsParent
+      x-operation-id-source: derived
 components:
   parameters:
     EntityId:

@@ -7,9 +7,7 @@ info:
 
     Productboard. Authentication uses Personal API Tokens (Bearer) or OAuth 2.0
 
-    (authorization code or server-to-server JWT). Uses cursor-based pagination.
-
-    '
+    (authorization code or server-to-server JWT). Uses cursor-based pagination.'
   version: 2.0.0
   contact:
     name: Productboard Developer
@@ -33,6 +31,8 @@ paths:
       responses:
         '200':
           description: Paged list of notes
+      operationId: getNotes
+      x-operation-id-source: derived
     post:
       tags:
       - Notes
@@ -40,6 +40,8 @@ paths:
       responses:
         '201':
           description: Note created
+      operationId: postNotes
+      x-operation-id-source: derived
   /notes/{id}:
     parameters:
     - name: id
@@ -54,6 +56,8 @@ paths:
       responses:
         '200':
           description: Note record
+      operationId: getNotesById
+      x-operation-id-source: derived
     patch:
       tags:
       - Notes
@@ -61,6 +65,8 @@ paths:
       responses:
         '200':
           description: Note updated
+      operationId: patchNotesById
+      x-operation-id-source: derived
     delete:
       tags:
       - Notes
@@ -68,6 +74,8 @@ paths:
       responses:
         '204':
           description: Note deleted
+      operationId: deleteNotesById
+      x-operation-id-source: derived
   /notes/search:
     post:
       tags:
@@ -76,6 +84,8 @@ paths:
       responses:
         '200':
           description: Search results
+      operationId: postNotesSearch
+      x-operation-id-source: derived
   /notes/configurations:
     get:
       tags:
@@ -84,6 +94,8 @@ paths:
       responses:
         '200':
           description: Configuration list
+      operationId: getNotesConfigurations
+      x-operation-id-source: derived
   /notes/configurations/{type}:
     parameters:
     - name: type
@@ -98,6 +110,8 @@ paths:
       responses:
         '200':
           description: Configuration record
+      operationId: getNotesConfigurationsByType
+      x-operation-id-source: derived
 components:
   parameters:
     PageCursor:

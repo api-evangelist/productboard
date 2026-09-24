@@ -68,8 +68,6 @@ apis:
   - type: PostmanCollection
     url: >-
       https://www.postman.com/pb-stargate/productboard-public-api/documentation/cpzbdpj/productboard-api-reference
-  - url: graphql/productboard-graphql.md
-    type: GraphQL
 - aid: productboard:productboard-entities-api
   name: Productboard Entities API
   description: The Entities API from Productboard — 5 operation(s) for entities.

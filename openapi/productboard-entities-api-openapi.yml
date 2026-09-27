@@ -111,17 +111,17 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
+    EntityId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
     PageCursor:
       name: pageCursor
       in: query
       description: Cursor returned in `links.next` for paginated responses.
       required: false
-      schema:
-        type: string
-    EntityId:
-      name: id
-      in: path
-      required: true
       schema:
         type: string
   securitySchemes:

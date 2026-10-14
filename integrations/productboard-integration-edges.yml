@@ -2,6 +2,7 @@ generated: '2026-10-14'
 method: searched
 checked:
 - https://marketplace.atlassian.com/
+- okta/integrations/okta-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: Atlassian Marketplace
@@ -20,5 +21,32 @@ edges:
   publisher_name: Productboard
   detected_by: sweep-devtools.py
   detected: '2026-10-14'
+- partner_name: Okta (own)
+  partner: okta
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.okta.com/integrations/productboard/
+  mirror_of: okta/integrations/okta-integration-edges.yml
+  apps:
+  - Productboard
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Lifecycle Management
+  badges:
+  - OKTA_VERIFIED
+  features:
+  - CREATE
+  - DEACTIVATE
+  - GROUP_LINKING
+  - GROUP_PUSH
+  - IDENTITY_SECURITY_POSTURE_MANAGEMENT
+  - SAML
+  - UPDATE
 source:
 - https://marketplace.atlassian.com/

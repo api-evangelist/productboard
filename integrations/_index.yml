@@ -107,7 +107,7 @@
     - alpha
     in_cloud: true
     builder: unknown (community connector; contributor not in the record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: productboard-fivetran
   label: Fivetran
@@ -133,7 +133,7 @@
     - connectors/applications/productboard
     vendor_link: https://app.productboard.com/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: productboard-microsoft-teams-own
   label: Microsoft Teams (own)

@@ -15,70 +15,6 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
-- slug: productboard-okta-own
-  label: Okta (own)
-  partner: okta
-  partner_name: Okta (own)
-  category: Lifecycle Management
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://www.okta.com/integrations/productboard/
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: productboard-zapier
-  label: Zapier
-  partner: zapier
-  partner_name: Zapier
-  type: marketplace
-  marketplace: zapier-directory
-  channel: ipaas-listing
-  evidence: https://zapier.com/apps/productboard/integrations
-  source: edge
-  relationship: ipaas-bridge
-  contract_reference:
-    register: Zapier app directory (zapier.com/api/v4/apps)
-    spec_file: null
-    role: ipaas-connector:zapier
-    registered_name: Productboard
-    matched_domain: productboard.com
-    matched_by: domain
-    detected_by: sweep-workflow-automation.py
-    detected: '2026-10-15'
-    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
-    app_slug: productboard
-    beta: false
-    builder: unknown (not in the directory record)
-  status: not-a-workflow
-  arazzo: null
-- slug: productboard-pipedream
-  label: Pipedream
-  partner: pipedream
-  partner_name: Pipedream
-  type: marketplace
-  marketplace: pipedream-components
-  channel: open-source-node
-  evidence: https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/productboard
-  source: edge
-  relationship: ipaas-bridge
-  contract_reference:
-    register: Pipedream components (PipedreamHQ/pipedream components/)
-    spec_file: null
-    role: ipaas-connector:pipedream
-    registered_name: productboard
-    matched_domain: productboard.com
-    matched_by: domain
-    detected_by: sweep-workflow-automation.py
-    detected: '2026-10-15'
-    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
-    app_slug: productboard
-    actions: true
-    sources: true
-    builder: Pipedream repo (component)
-  status: not-a-workflow
-  arazzo: null
 - slug: productboard-airbyte
   label: Airbyte
   partner: airbyte
@@ -135,6 +71,57 @@
     builder: Fivetran
   status: not-a-workflow
   arazzo: null
+- slug: productboard-zapier
+  label: Zapier
+  partner: zapier
+  partner_name: Zapier
+  type: marketplace
+  marketplace: zapier-directory
+  channel: ipaas-listing
+  evidence: https://zapier.com/apps/productboard/integrations
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Zapier app directory (zapier.com/api/v4/apps)
+    spec_file: null
+    role: ipaas-connector:zapier
+    registered_name: Productboard
+    matched_domain: productboard.com
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: productboard
+    beta: false
+    builder: unknown (not in the directory record)
+  status: not-a-workflow
+  arazzo: null
+- slug: productboard-pipedream
+  label: Pipedream
+  partner: pipedream
+  partner_name: Pipedream
+  type: marketplace
+  marketplace: pipedream-components
+  channel: open-source-node
+  evidence: https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/productboard
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Pipedream components (PipedreamHQ/pipedream components/)
+    spec_file: null
+    role: ipaas-connector:pipedream
+    registered_name: productboard
+    matched_domain: productboard.com
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: productboard
+    actions: true
+    sources: true
+    builder: Pipedream repo (component)
+  status: not-a-workflow
+  arazzo: null
 - slug: productboard-microsoft-teams-own
   label: Microsoft Teams (own)
   partner: microsoft-teams
@@ -148,6 +135,19 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: productboard-okta-own
+  label: Okta (own)
+  partner: okta
+  partner_name: Okta (own)
+  category: Lifecycle Management
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.okta.com/integrations/productboard/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
 - slug: productboard-slack-own
   label: Slack (own)
   partner: slack
@@ -157,6 +157,19 @@
   marketplace: own
   channel: partner-built
   evidence: https://slack.com/marketplace/AD9646DNX-productboard
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: productboard-zendesk-own
+  label: Zendesk (own)
+  partner: zendesk
+  partner_name: Zendesk (own)
+  category: Product and Project Management
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.zendesk.com/marketplace/apps/support/172357/productboard/
   source: edge
   relationship: platform-app
   status: not-a-workflow

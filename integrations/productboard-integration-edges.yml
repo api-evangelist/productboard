@@ -21,6 +21,7 @@ checked:
 - https://www.indexventures.com/companies/
 - https://www.sequoiacap.com/our-companies/
 - https://www.sequoiacap.com/sitemap.xml
+- miro/integrations/miro-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: Atlassian Marketplace
@@ -309,5 +310,22 @@ edges:
     sector: business-applications, future-of-work
   detected_by: sweep-vc-portfolios.py
   first_seen: '2026-10-21'
+- partner_name: Miro (own)
+  partner: miro
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://miro.com/marketplace/productboard-embed/
+  mirror_of: miro/integrations/miro-integration-edges.yml
+  apps:
+  - Productboard (Miro Embed)
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: Miro app
 source:
 - https://marketplace.atlassian.com/

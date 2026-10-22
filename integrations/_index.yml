@@ -259,3 +259,16 @@
     sector: business-applications, future-of-work
   status: not-a-workflow
   arazzo: null
+- slug: productboard-miro-own
+  label: Miro (own)
+  partner: miro
+  partner_name: Miro (own)
+  category: Miro app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://miro.com/marketplace/productboard-embed/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null

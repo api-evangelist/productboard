@@ -1,4 +1,4 @@
-# Productboard (productboard)
+# Productboard
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,63 +66,128 @@
 
 Productboard is a product management platform that helps product teams capture user feedback, prioritize features, build product roadmaps, and align engineering, design, and go-to-market stakeholders around what to build next. The Productboard Public REST API (v1 and v2) provides programmatic access to features, components, products, notes, users, companies, objectives, releases, and webhooks at https://api.productboard.com, with authentication via a Public API Access token (Bearer) or OAuth2.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/productboard/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/productboard/refs/heads/main/apis.yml)
+**Areas:** Product Management · Roadmapping · Customer Feedback · Prioritization · Product Operations
 
-## Scope
+## Productboard on APIs.io
 
-- **Type:** Index
+Everything profiled for Productboard is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/productboard/](https://apis.io/providers/productboard/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (11)
 
-- Product Management
-- Roadmapping
-- Customer Feedback
-- Prioritization
-- Product Operations
+- [Productboard Public API](https://apis.io/apis/productboard/public-api/) — REST API for managing features, components, products, notes (customer feedback), users, companies, objectives, releases, and webhooks within Productboard.…
+- [Productboard Entities API](https://apis.io/apis/productboard/productboard-entities-api/) — The Entities API from Productboard — 5 operation(s) for entities.
+- [Productboard Entity Field Values API](https://apis.io/apis/productboard/productboard-entity-field-values-api/) — The Entity Field Values API from Productboard — 2 operation(s) for entity field values.
+- [Productboard Entity Relationships API](https://apis.io/apis/productboard/productboard-entity-relationships-api/) — The Entity Relationships API from Productboard — 2 operation(s) for entity relationships.
+- [Productboard Jira Integrations API](https://apis.io/apis/productboard/productboard-jira-integrations-api/) — The Jira Integrations API from Productboard — 4 operation(s) for jira integrations.
+- [Productboard Members API](https://apis.io/apis/productboard/productboard-members-api/) — The Members API from Productboard — 4 operation(s) for members.
+- [Productboard Note Relationships API](https://apis.io/apis/productboard/productboard-note-relationships-api/) — The Note Relationships API from Productboard — 3 operation(s) for note relationships.
+- [Productboard Notes API](https://apis.io/apis/productboard/productboard-notes-api/) — The Notes API from Productboard — 5 operation(s) for notes.
+- [Productboard Plugin Integrations API](https://apis.io/apis/productboard/productboard-plugin-integrations-api/) — The Plugin Integrations API from Productboard — 5 operation(s) for plugin integrations.
+- [Productboard Teams API](https://apis.io/apis/productboard/productboard-teams-api/) — The Teams API from Productboard — 4 operation(s) for teams.
+- [Productboard Webhooks API](https://apis.io/apis/productboard/productboard-webhooks-api/) — The Webhooks API from Productboard — 2 operation(s) for webhooks.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-11
-- **Modified:** 2026-05-11
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### GraphQL (1)
 
-### Productboard Public API
+GraphQL schemas.
 
-REST API for managing features, components, products, notes (customer feedback), users, companies, objectives, releases, and webhooks within Productboard. Supports both v1 and v2 endpoints. Authentication uses Bearer tokens (Public API Access token) or OAuth2 for multi-tenant integrations.
+- [Moved to /providers/productboard/](https://apis.io/graphqls/productboard/productboard-graphql/)
 
-- **Human URL:** [https://developer.productboard.com/](https://developer.productboard.com/)
-- **Base URL:** `https://api.productboard.com`
+#### MCP servers (1)
 
-#### Tags
+Model Context Protocol servers that expose the API to agents.
 
-- Product Management
-- Roadmapping
-- Customer Feedback
-- REST
+- [productboard](https://apis.io/servers/productboard/productboard/)
 
-#### Properties
+#### Collections (10)
 
-- [Documentation](https://developer.productboard.com/)
-- [Authentication](https://developer.productboard.com/reference/authentication)
-- [A P I  Token  Authentication](https://developer.productboard.com/v2.0.0/reference/api-token)
-- [O Auth2  Guide](https://developer.productboard.com/docs/how-to-integrate-with-productboard-via-oauth2-developer-documentation)
-- [Postman  Collection](https://www.postman.com/pb-stargate/productboard-public-api/documentation/cpzbdpj/productboard-api-reference)
+Postman and Open Collection request collections.
 
-## Common Properties
+- [Productboard Public Entities API](https://apis.io/collections/productboard/open-productboard-entities-api/)
+- [Productboard Public Entity Field Values API](https://apis.io/collections/productboard/open-productboard-entity-field-values-api/)
+- [Productboard Public Entity Relationships API](https://apis.io/collections/productboard/open-productboard-entity-relationships-api/)
+- [Productboard Public Jira Integrations API](https://apis.io/collections/productboard/open-productboard-jira-integrations-api/)
+- [Productboard Public Members API](https://apis.io/collections/productboard/open-productboard-members-api/)
+- [Productboard Public Note Relationships API](https://apis.io/collections/productboard/open-productboard-note-relationships-api/)
+- [Productboard Public Notes API](https://apis.io/collections/productboard/open-productboard-notes-api/)
+- [Productboard Public Plugin Integrations API](https://apis.io/collections/productboard/open-productboard-plugin-integrations-api/)
+- [Productboard Public Teams API](https://apis.io/collections/productboard/open-productboard-teams-api/)
+- [Productboard Public Webhooks API](https://apis.io/collections/productboard/open-productboard-webhooks-api/)
 
-- [GitHub Organization](https://github.com/productboard)
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Productboard Domain Security](https://apis.io/security/productboard/productboard-domain-security/)
+- [Productboard Trust Center](https://apis.io/security/productboard/productboard-trust-center/)
+- [Productboard Vulnerability Disclosure](https://apis.io/security/productboard/productboard-vulnerability-disclosure/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.productboard.com)
 - [Documentation](https://developer.productboard.com)
 - [Pricing](https://www.productboard.com/pricing/)
-- [Sign Up](https://www.productboard.com/trial/)
 - [Support](https://support.productboard.com)
 - [Blog](https://www.productboard.com/blog/)
-- [Status Page](https://status.productboard.com)
-- [LinkedIn](https://www.linkedin.com/company/productboard/)
-- [L L Ms Txt](https://developer.productboard.com/llms.txt)
+- [GitHub](https://github.com/productboard)
+- [Status](https://status.productboard.com)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 36.3** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 46.3 |
+| Contract governance | 0.0 |
+| Operational transparency | 28.9 |
+| Developer ergonomics | 22.6 |
+| Access clarity | 31.6 |
+
+**Agent readiness 41.5** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 22.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/productboard/](https://apis.io/providers/productboard/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Productboard: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/productboard/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
